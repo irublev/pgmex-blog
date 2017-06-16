@@ -82,16 +82,17 @@
           {% endif %}		  
       </ul>
       <p class="copyright text-muted">
+        <a href="{{ site.author.url }}">{{ site.author.name }}</a>
+        &nbsp;&bull;&nbsp;
         {% if site.time|date('%Y') == '2017' %}
-        Copyright 2017 - {{ site.author.name }}
+        Copyright 2017
         {% else %}
-        Copyright 2017 - {{ site.time | date: '%Y' }} - {{ site.author.name }}
+        Copyright 2017 - {{ site.time | date: '%Y' }}
         {% endif %}
-        <br/>   
-        Blog content is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
-        Unless otherwise stated or granted, code samples licensed under the MIT license.
-        <br/>  
-        <!-- <a href="{{ site.baseurl }}/privacy">privacy</a> | <a href="{{ site.baseurl }}/blogtegrity">blogtegrity</a>  -->
+        {% if site.url-pretty %}
+        &nbsp;&bull;&nbsp;
+        <a href="{{ site.url }}">{{ site.url-pretty }}</a>
+        {% endif %}
       </p>
       <p class="theme-by text-muted">
         Site design is based on 
