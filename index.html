@@ -13,11 +13,11 @@ title: Home
       <div class="posts-list">
         {% for post in paginator.posts %}
         <article class="post-preview">
-          <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+          <h2 class="post-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
           {% include post/meta.html %}      
           <div class="post-entry">
             {{ post.content | truncatewords: 50 | strip_html | xml_escape}}
-          <a href="{{ post.url }}" class="post-read-more">[Read&nbsp;More]</a>
+          <a href="{{ post.url | prepend: site.baseurl }}" class="post-read-more">[Read&nbsp;More]</a>
           </div>
         
         </article>
@@ -28,12 +28,12 @@ title: Home
       <ul class="pager main-pager">
         {% if paginator.previous_page %}
         <li class="previous">
-          <a href="{{ paginator.previous_page_path | replace: '//', '/' }}">&larr; Newer Posts</a>
+          <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
         </li>
         {% endif %}
         {% if paginator.next_page %}
         <li class="next">
-          <a href="{{ paginator.next_page_path | replace: '//', '/' }}">Older Posts &rarr;</a>
+          <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
         </li>
         {% endif %}
       </ul>
