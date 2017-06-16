@@ -24,7 +24,7 @@ disqus:
   show_comment_count: true
    
 github:
-  repo: https://github.com/AlliedTesting/pgmex-blog
+  repo: https://github.com/irublev/pgmex-blog
 
 gems:
   - jekyll-feed
