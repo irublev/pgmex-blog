@@ -1,5 +1,5 @@
 url: "http://irublev.github.io/pgmex-blog"
-#baseurl: ""
+baseurl: "/pgmex-blog"
 title: PgMex Blog
 description: >
   PgMex is a high-performance PostgreSQL client library for Matlab
