@@ -11,6 +11,7 @@ description: >
 # feedburner: http://feeds.feedburner.com/AlliedTesting
 title-img: allied_logo.jpg
 subtitle-img: logo.png
+perftesturl: "https://github.com/AlliedTesting/pgmex-jdbc-perf-test"
 
 
 # google_analytics: "UA-2662385-1"
