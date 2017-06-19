@@ -15,6 +15,7 @@ perftesturl: "https://github.com/AlliedTesting/pgmex-jdbc-perf-test"
 
 
 excerpt_separator: <!--end_of_excerpt-->
+excerpt_length: 200
 
 # google_analytics: "UA-2662385-1"
 
