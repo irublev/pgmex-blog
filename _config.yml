@@ -23,7 +23,7 @@ excerpt_separator: <!--end_of_excerpt-->
 #    size: 80
 
 disqus:
-  shortname: "pgmexblog"
+  shortname: "pgmexblog-test"
   show_comment_count: true
    
 github:
