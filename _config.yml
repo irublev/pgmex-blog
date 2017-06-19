@@ -11,6 +11,7 @@ description: >
 # feedburner: http://feeds.feedburner.com/AlliedTesting
 title-img: allied_logo.jpg
 subtitle-img: logo.png
+pgmexurl: "https://pgmex.alliedtesting.com"
 perftesturl: "https://github.com/AlliedTesting/pgmex-jdbc-perf-test"
 
 
