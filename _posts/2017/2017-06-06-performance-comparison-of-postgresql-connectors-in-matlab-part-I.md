@@ -3,7 +3,6 @@ layout: post
 title:  "Performance comparison of PostgreSQL connectors in Matlab, Part I: inserting data"
 date:   2017-06-06 19:03:16 +0300
 authors: Peter Gagarinov & Ilya Rublev
-excerpt_separator: <!--end_of_excerpt-->
 ---
 
 
