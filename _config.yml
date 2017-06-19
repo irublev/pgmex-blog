@@ -18,10 +18,10 @@ perftesturl: "https://github.com/AlliedTesting/pgmex-jdbc-perf-test"
 excerpt_separator: <!--end_of_excerpt-->
 excerpt_length: 200
 
-# google_analytics: "UA-2662385-1"
+# google_analytics: ""
 
 # gravatar:
-#    hash: e74e26bfd345fdd80bedf436178c5829
+#    hash: 
 #    size: 80
 
 disqus:
@@ -64,7 +64,7 @@ footer-links-active:
 url-pretty: "irublev.github.io/pgmex-blog"  # eg. "deanattali.com/beautiful-jekyll"
 
 # Output options (more information on Jekyll's site)
-timezone: America/New_York
+timezone: Europe/Moscow
 markdown: kramdown
 highlighter: rouge
 permalink: /:year/:month/:day/:title/
