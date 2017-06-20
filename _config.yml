@@ -1,13 +1,7 @@
 url: "https://irublev.github.io/pgmex-blog"
 baseurl: "/pgmex-blog"
 title: PgMex Blog
-description: >
-  PgMex is a high-performance PostgreSQL client library for Matlab
-  that enables a Matlab-based application to communicate with PostgreSQL database
-  in the Matlab native way by passing data in a form of matrices, multi-dimensional
-  arrays and structures. The library is written in pure C which gives a significant
-  performance boost for both small and data-heavy database requests. Both Windows
-  and Linux platforms are supported.
+description: About PostgreSQL client library for Matlab
 # feedburner: http://feeds.feedburner.com/AlliedTesting
 title-img: allied_logo.jpg
 subtitle-img: logo.png
