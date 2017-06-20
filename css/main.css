@@ -207,6 +207,9 @@ img {
 .navbar-custom .nav .navlinks-container {
   position: relative;
 }
+.navbar-custom .nav .navlinks-container:hover {
+  background: #262626;
+}
 .navbar-custom .nav .navlinks-parent:after {
   content: " \25BC";
 }
@@ -224,6 +227,9 @@ img {
   border-width: 0 1px 1px 1px;
   font-size: 12px;
 }
+.navbar-custom .nav .navlinks-container .navlinks-children a:hover {
+  background: #262626;
+}
 @media only screen and (max-width: 767px) {
   .navbar-custom .nav .navlinks-container.show-children {
     background: #151F26;
@@ -233,9 +239,6 @@ img {
   }
 }
 @media only screen and (min-width: 768px) {
-  .navbar-custom .nav .navlinks-container:hover {
-    background: #151F26;
-  }
   .navbar-custom .nav .navlinks-container:hover .navlinks-children {
     display: block;
   }
@@ -247,9 +250,6 @@ img {
     padding-left: 10px;
     border: 1px solid #151F26;
     border-width: 0 1px 1px;
-  }
-  .navbar-custom .nav .navlinks-container .navlinks-children a:hover {
-    background: #262626;
   }
 }
 
