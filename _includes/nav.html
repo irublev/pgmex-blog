@@ -23,13 +23,33 @@
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
         <li class="sidebar-nav-item{% if page.url == site.url %} active{% endif %}">
-          <a href="{{ site.pgmexurl }}">PgMex Home{% if page.url == site.url %} <span class="sr-only">(current)</span>{% endif %}</a>
+          <a href="{{ site.url }}">Home{% if page.url == site.url %} <span class="sr-only">(current)</span>{% endif %}</a>
         </li>
 
-        <li class="sidebar-nav-item{% if page.url == site.url %} active{% endif %}">
-          <a href="{{ site.perftesturl }}">Performance Tests{% if page.url == site.url %} <span class="sr-only">(current)</span>{% endif %}</a>
-        </li>
+        {% for link in site.navbar-links %}
+          {% if link[1].first %}
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">{{ link[0] }}</a>
+              <div class="navlinks-children">
+                {% for childlink in link[1] %}
+                  {% for linkparts in childlink %}
+                    {% include navbarlink.html link=linkparts %}
+                  {% endfor %}
+                {% endfor %}
+              </div>
+            </li>
+          {% else %}
+            <li>
+              {% include navbarlink.html link=link %}
+            </li>
+          {% endif %}
+        {% endfor %}
 
         {% comment %}
           The code below dynamically generates a sidebar nav of pages with

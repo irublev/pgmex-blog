@@ -8,9 +8,12 @@ title-img: logo.png
 title-url: "http://pgmex.alliedtesting.com"
 subtitle-img: allied_logo.gif
 subtitle-url: "https://www.alliedtesting.com"
-pgmexurl: "http://pgmex.alliedtesting.com"
-perftesturl: "https://github.com/AlliedTesting/pgmex-jdbc-perf-test"
 
+# List of links in the navigation bar (excluding "Home" as well as those that are given as separate md files in the root folder)
+navbar-links:
+  Resources:
+    - PgMex Library: "http://pgmex.alliedtesting.com"
+    - Performance Tests: "https://github.com/AlliedTesting/pgmex-jdbc-perf-test"
 
 excerpt_separator: <!--end_of_excerpt-->
 excerpt_length: 200
