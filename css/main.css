@@ -222,7 +222,7 @@ img {
   background: #151F26;
   text-decoration: none !important;
   border-width: 0 1px 1px 1px;
-  font-weight: normal;
+  font-size: 12px;
 }
 @media only screen and (max-width: 767px) {
   .navbar-custom .nav .navlinks-container.show-children {
@@ -241,11 +241,11 @@ img {
   }
   .navbar-custom .nav .navlinks-children {
     position: absolute;
-	text-align: center;
+	text-align: left;
   }
   .navbar-custom .nav .navlinks-container .navlinks-children a {
     padding-left: 10px;
-    border: 1px solid #eaeaea;
+    border: 1px solid #151F26;
     border-width: 0 1px 1px;
   }
 }
