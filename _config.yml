@@ -1,6 +1,7 @@
 url: "https://irublev.github.io/pgmex-blog"
 baseurl: "/pgmex-blog"
 title: PgMex Blog
+subtitle: About PostgreSQL client library for Matlab
 description: About PostgreSQL client library for Matlab
 # feedburner: http://feeds.feedburner.com/AlliedTesting
 title-img: allied_logo.jpg
