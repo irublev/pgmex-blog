@@ -234,9 +234,10 @@ img {
 }
 @media only screen and (min-width: 768px) {
   .navbar-custom .nav .navlinks-container:hover {
-    background: #262626;
+    background: #151F26;
   }
   .navbar-custom .nav .navlinks-container:hover .navlinks-children {
+    background: #262626;
     display: block;
   }
   .navbar-custom .nav .navlinks-children {
