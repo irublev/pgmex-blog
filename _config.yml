@@ -18,6 +18,8 @@ excerpt_length: 200
 #    hash: 
 #    size: 80
 
+site.avatar: logo_small_sqr.png
+
 disqus:
   shortname: "pgmexblog-test"
   show_comment_count: true
