@@ -150,12 +150,20 @@ img {
     transition: background .5s ease-in-out,padding .5s ease-in-out;
   }
 
+  .navbar-custom .navbar-brand-logo {
+    padding-top: 0;
+  }
+
   .navbar-custom .navbar-brand-logo img {
     height: 50px;
   }
 
   .navbar-custom.top-nav-short {
     padding: 0;
+  }
+
+  .navbar-custom.top-nav-short .navbar-brand-logo {
+    padding-top: 5px;
   }
 
   .navbar-custom.top-nav-short .navbar-brand-logo img {
