@@ -50,7 +50,7 @@ We have excellent delivery capabilities
 We have an exemplary track record of delivering on time, within budget and achieving all other key performance criteria. We have always been able to staff a project quickly and with high quality teams, even for projects.
 
 ## Services
-<table cellspacing="1" cellpadding="4" border="0" style="vertical-align: top;  background-color: transparent; font-size: 2em; "><tbody><tr ><td valign="top" >
+<table cellspacing="1" cellpadding="4" border="0" style="vertical-align: top;  background-color: transparent; font-size: 8px; "><tbody><tr ><td valign="top" >
 <p><span class="alliedservices">►</span> <span class="alliedservices"><strong> </strong><span><strong>Core QA and Testing </strong></span></span></p>
 <hr class="alliedservices"/><ul><li>Intelligent manual testing (functional and regression)</li>
 <li>Trading functionality (valid/invalid orders, order status)</li>
