@@ -1,28 +1,24 @@
 ---
-layout: nil
+layout: null
 ---
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-
-  <title><![CDATA[{% if site.titlecase %}{{ page.title | titlecase | cdata_escape }}{% else %}{{ page.title | cdata_escape }}{% endif %} | {{ site.title | cdata_escape }}]]></title>
-  <link href="{{ site.url }}/{{ page.feed_url }}" rel="self"/>
-  <link href="{{ site.url }}/"/>
-  <updated>{{ site.time | date_to_xmlschema }}</updated>
-  <id>zzz{{ site.url }}/</id>
-  <author>
-    <name><![CDATA[{{ site.author | strip_html }}]]></name>
-    {% if site.email %}<email><![CDATA[{{ site.email }}]]></email>{% endif %}
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
-
-  {% for post in site.categories[page.category] limit: 5 %}
-  <entry>
-    <title type="html"><![CDATA[{% if site.titlecase %}{{ post.title | titlecase | cdata_escape }}{% else %}{{ post.title | cdata_escape }}{% endif %}]]></title>
-    <link href="{{ site.url }}{{ post.url }}"/>
-    <updated>{{ post.date | date_to_xmlschema }}</updated>
-    <id>{{ site.url }}{{ post.id }}</id>
-    <content type="html"><![CDATA[{{ post.content | expand_urls: site.url | markdownify | cdata_escape }}]]></content>
-  </entry>
-  {% endfor %}
-</feed>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.title | xml_escape }}</title>
+    <description>{{ site.description | xml_escape }}</description>
+    <link>{{ site.url }}</link>
+    <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml" />
+    {% for post in site.posts limit:20 %}
+      <item>
+        <title>{{ post.title | xml_escape }}</title>
+        <description>
+          {% if post.subtitle %}{{ post.subtitle | xml_escape }} - {% endif %}
+          {{ post.content | strip_html | xml_escape | truncatewords: 50 }}
+        </description>
+        <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+        <link>{{ site.url }}{{ post.url }}</link>
+        <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
+      </item>
+    {% endfor %}
+  </channel>
+</rss>
