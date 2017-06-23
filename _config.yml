@@ -1,6 +1,5 @@
 url: "https://irublev.github.io/pgmex-blog"
 baseurl: "/pgmex-blog"
-mainurl: "https://irublev.github.io"
 title: PgMex Blog
 subtitle: Allied Testing
 description: PostgreSQL-Matlab connectivity
