@@ -17,14 +17,14 @@
       {% else %}
         <a class="navbar-brand" href="{{ site.url }}">{{ site.title }}</a>
       {% endif %}
-      <div class="navbar-home" style=" left:50%; display:inline;" >
-       <ul class="nav navbar-nav navbar-right">
-         <li class="sidebar-nav-item{% if page.url == site.url %} active{% endif %}">
-           <a href="{{ site.url }}">Home{% if page.url == site.url %} <span class="sr-only">(current)</span>{% endif %}</a>
-         </li>
-      </div>
     </div>
 
+    <div class="navbar-home" style=" left:50%; " >
+      <ul class="nav navbar-nav navbar-right">
+        <li class="sidebar-nav-item{% if page.url == site.url %} active{% endif %}">
+          <a href="{{ site.url }}">Home{% if page.url == site.url %} <span class="sr-only">(current)</span>{% endif %}</a>
+        </li>
+    </div>
 
     <div class="collapse navbar-collapse" id="main-navbar" >
       <ul class="nav navbar-nav navbar-right">
