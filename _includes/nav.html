@@ -17,58 +17,55 @@
       {% else %}
         <a class="navbar-brand" href="{{ site.url }}">{{ site.title }}</a>
       {% endif %}
-    </div>
-
-
-    <div class="navbar-header" style=" float:right;" >
-      <div class="collapse navbar-collapse" id="main-navbar" style=" float:right; display:inline-block;" >
-        <ul class="nav navbar-nav navbar-right">
-          <li class="sidebar-nav-item{% if page.url == site.url %} active{% endif %}">
-            <a href="{{ site.url }}">Home2{% if page.url == site.url %} <span class="sr-only">(current)</span>{% endif %}</a>
-          </li>
-
-          {% for link in site.navbar-links %}
-            {% if link[1].first %}
-              <li class="navlinks-container">
-                <a class="navlinks-parent" href="#!">{{ link[0] }}</a>
-                <div class="navlinks-children">
-                  {% for childlink in link[1] %}
-                    {% for linkparts in childlink %}
-                      {% include navbarlink.html link=linkparts %}
-                    {% endfor %}
-                  {% endfor %}
-                </div>
-              </li>
-            {% else %}
-              <li>
-                {% include navbarlink.html link=link %}
-              </li>
-            {% endif %}
-          {% endfor %}
-
-          {% comment %}
-            The code below dynamically generates a sidebar nav of pages with
-            `layout: page` in the front-matter. See readme for usage.
-          {% endcomment %}
-        
-          {% assign pages_list = site.pages %}
-          {% for node in pages_list %}
-            {% if node.title != null %}
-              {% if node.layout == "page" and node.nav-include != false %}
-                <li class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}">
-                  <a href="{{ node.url | prepend: site.baseurl }}">{{ node.title }}{% if page.url == node.url %} <span class="sr-only">(current)</span>{% endif %}</a>
-                </li>
-              {% endif %}
-            {% endif %}
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="navbar-home" style=" float:right; display:inline-block;" >
+      <div class="navbar-home" style=" left:50%; display:inline;" >
        <ul class="nav navbar-nav navbar-right">
          <li class="sidebar-nav-item{% if page.url == site.url %} active{% endif %}">
            <a href="{{ site.url }}">Home{% if page.url == site.url %} <span class="sr-only">(current)</span>{% endif %}</a>
          </li>
       </div>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="main-navbar" >
+      <ul class="nav navbar-nav navbar-right">
+        <li class="sidebar-nav-item{% if page.url == site.url %} active{% endif %}">
+          <a href="{{ site.url }}">Home2{% if page.url == site.url %} <span class="sr-only">(current)</span>{% endif %}</a>
+        </li>
+
+        {% for link in site.navbar-links %}
+          {% if link[1].first %}
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="#!">{{ link[0] }}</a>
+              <div class="navlinks-children">
+                {% for childlink in link[1] %}
+                  {% for linkparts in childlink %}
+                    {% include navbarlink.html link=linkparts %}
+                  {% endfor %}
+                {% endfor %}
+              </div>
+            </li>
+          {% else %}
+            <li>
+              {% include navbarlink.html link=link %}
+            </li>
+          {% endif %}
+        {% endfor %}
+        {% comment %}
+        The code below dynamically generates a sidebar nav of pages with
+          `layout: page` in the front-matter. See readme for usage.
+        {% endcomment %}
+        
+        {% assign pages_list = site.pages %}
+        {% for node in pages_list %}
+          {% if node.title != null %}
+            {% if node.layout == "page" and node.nav-include != false %}
+              <li class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}">
+                <a href="{{ node.url | prepend: site.baseurl }}">{{ node.title }}{% if page.url == node.url %} <span class="sr-only">(current)</span>{% endif %}</a>
+              </li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </ul>
     </div>
 
 	{% if site.avatar and (layout.show-avatar or page.show-avatar) %}
