@@ -33,6 +33,7 @@ github:
   repo: https://github.com/irublev/pgmex-blog
 
 gems:
+  - jekyll-feed
   - jekyll-mentions
   - jekyll-sitemap
   - jekyll-paginate
