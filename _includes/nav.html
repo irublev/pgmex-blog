@@ -20,14 +20,8 @@
     </div>
 
 
-    <div class="navbar-header" >
-     <div class="navbar-home" style=" float: right; display:inline;" >
-       <ul class="nav navbar-nav navbar-right">
-         <li class="sidebar-nav-item{% if page.url == site.url %} active{% endif %}">
-           <a href="{{ site.url }}">Home{% if page.url == site.url %} <span class="sr-only">(current)</span>{% endif %}</a>
-         </li>
-      </div>
-      <div class="collapse navbar-collapse" id="main-navbar" style=" float: right; display:inline;" >
+    <div class="navbar-header" style=" float:right;" >
+      <div class="collapse navbar-collapse" id="main-navbar" >
         <ul class="nav navbar-nav navbar-right">
           <li class="sidebar-nav-item{% if page.url == site.url %} active{% endif %}">
             <a href="{{ site.url }}">Home2{% if page.url == site.url %} <span class="sr-only">(current)</span>{% endif %}</a>
@@ -68,6 +62,12 @@
             {% endif %}
           {% endfor %}
         </ul>
+      </div>
+      <div class="navbar-home" style=" float:right; display:inline;" >
+       <ul class="nav navbar-nav navbar-right">
+         <li class="sidebar-nav-item{% if page.url == site.url %} active{% endif %}">
+           <a href="{{ site.url }}">Home{% if page.url == site.url %} <span class="sr-only">(current)</span>{% endif %}</a>
+         </li>
       </div>
     </div>
 
