@@ -17,13 +17,7 @@
       {% else %}
         <a class="navbar-brand" href="{{ site.url }}">{{ site.title }}</a>
       {% endif %}
-    </div>
-
-    <div class="navbar-header" >
-      <ul class="nav navbar-nav navbar-right">
-        <li class="sidebar-nav-item{% if page.url == site.url %} active{% endif %}">
-          <a href="{{ site.url }}">Home{% if page.url == site.url %} <span class="sr-only">(current)</span>{% endif %}</a>
-        </li>
+      <a class="nav navbar-nav navbar-right" style=" float:right;" href="{{ site.url }}">Home{% if page.url == site.url %} <span class="sr-only">(current)</span>{% endif %}</a>
     </div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
