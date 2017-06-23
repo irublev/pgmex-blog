@@ -5,10 +5,10 @@ layout: nil
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[{% if site.titlecase %}{{ page.title | titlecase | cdata_escape }}{% else %}{{ page.title | cdata_escape }}{% endif %} | {{ site.title | cdata_escape }}]]></title>
-  <link href="{{ site.mainurl }}/{{ page.feed_url }}" rel="self"/>
-  <link href="{{ site.mainurl }}/"/>
+  <link href="xxx{{ site.mainurl }}/{{ page.feed_url }}" rel="self"/>
+  <link href="yyy{{ site.mainurl }}/"/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
-  <id>{{ site.mainurl }}/</id>
+  <id>zzz{{ site.mainurl }}/</id>
   <author>
     <name><![CDATA[{{ site.author | strip_html }}]]></name>
     {% if site.email %}<email><![CDATA[{{ site.email }}]]></email>{% endif %}
