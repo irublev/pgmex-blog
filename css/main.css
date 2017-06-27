@@ -162,21 +162,6 @@ img {
   margin-top: -50px;
 }
 
-.navbar-custom .navbar-home-container li a {
-  text-transform: uppercase;
-  font-size: 18px;
-  letter-spacing: 1px;
-}
-.navbar-custom .navbar-home-container li a:hover {
-  background: #262626
-}
-
-.navbar-custom .navbar-home-container,
-.navbar-custom .navbar-home-container li a {
-  font-weight: 900;
-  color: #2783bf;
-}
-
 @media only screen and (min-width: 768px) {
   .navbar-custom {
     padding: 20px 0;
