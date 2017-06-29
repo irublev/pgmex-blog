@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Performance comparison of PostgreSQL connectors in Matlab, Part I: inserting data"
-date:   2017-06-06 19:03:16 +0300
+date:   2017-06-29 10:48:23 +0300
 authors: Peter Gagarinov & Ilya Rublev
 ---
 
@@ -59,10 +59,10 @@ That means that all the queries are executed one after another without waiting f
    be revealed below). But that does not explain why **fastinsert** is in the most cases slower than **datainsert**.
 
 The reason is rather simple. As shows an analysis of source code for these functions **fastinsert** prepares data within Matlab,
-creating a Java object of **org.postgresql.jdbc.PgPreparedStatement** type and filling it tuple by tuple, field by field by calling the respective
+creating a Java object of <span class="long-text" >**org.postgresql.jdbc.PgPreparedStatement**</span> type and filling it tuple by tuple, field by field by calling the respective
 setters. **datainsert** also creates an object of the same type corresponding to a special prepared statement, but, in contrast to **fastinsert**,
 filling of this object with data is performed in Java instead of Matlab, using a special "writer" object of
-**com.mathworks.toolbox.database.writeTheData** type with the following interface:
+<span class="long-text" >**com.mathworks.toolbox.database.writeTheData**</span> type with the following interface:
 
 ```java
 public class com.mathworks.toolbox.database.writeTheData {
