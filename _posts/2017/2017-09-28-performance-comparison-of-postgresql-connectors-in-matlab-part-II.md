@@ -166,7 +166,7 @@ Caused by:
     Error using database.jdbc.cursor (line 229)
     Java exception occurred: 
     java.lang.OutOfMemoryError: GC overhead limit exceeded<a onclick="return toggleMe('para1')">[see more...]</a>
-<div id="para1" style="display:none; margin-top: -4px;">
+<div id="para1" style="display:none; margin-top: -30px;">
     	at java.util.zip.ZipCoder.getBytes(Unknown Source)
     	at java.util.zip.ZipFile.getEntry(Unknown Source)
     	at java.util.jar.JarFile.getEntry(Unknown Source)
