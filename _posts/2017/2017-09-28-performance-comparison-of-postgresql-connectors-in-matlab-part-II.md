@@ -153,6 +153,9 @@ It may be seen that the red graphs on all the three pictures above (they corresp
 exception is:
 
 <!---
+<a style="cursor:pointer;" onclick="return toggleMe('para1')">
+See more...
+</a>
 -->
 
 <div class="language-matlab highlighter-rouge">
@@ -163,12 +166,10 @@ Caused by:
     Error using database.jdbc.cursor (line 229)
     Java exception occurred: 
     java.lang.OutOfMemoryError: GC overhead limit exceeded
-<a style="cursor:pointer;" onclick="return toggleMe('para1')">
+<a onclick="return toggleMe('para1')">
 See more...
 </a>
-   </pre>
 <div id="para1" style="display:none;">
-   <pre class="highlight">
     	at java.util.zip.ZipCoder.getBytes(Unknown Source)
     	at java.util.zip.ZipFile.getEntry(Unknown Source)
     	at java.util.jar.JarFile.getEntry(Unknown Source)
