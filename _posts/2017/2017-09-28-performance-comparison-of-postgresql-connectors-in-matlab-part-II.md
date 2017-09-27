@@ -165,10 +165,7 @@ Exception for function fetch, number of tuples 1200000
 Caused by:
     Error using database.jdbc.cursor (line 229)
     Java exception occurred: 
-    java.lang.OutOfMemoryError: GC overhead limit exceeded
-<a onclick="return toggleMe('para1')">
-See more...
-</a>
+    java.lang.OutOfMemoryError: GC overhead limit exceeded<a onclick="return toggleMe('para1')">...</a>
 <div id="para1" style="display:none;">
     	at java.util.zip.ZipCoder.getBytes(Unknown Source)
     	at java.util.zip.ZipFile.getEntry(Unknown Source)
