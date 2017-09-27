@@ -160,9 +160,9 @@ Caused by:
     Error using database.jdbc.cursor (line 229)
     Java exception occurred: 
     java.lang.OutOfMemoryError: GC overhead limit exceeded
-<p><a style="cursor:pointer;" onclick="return toggleMe('para1')">
+<a style="cursor:pointer;" onclick="return toggleMe('para1')">
 See more...
-</a></p>
+</a>
 <div id="para1" style="display:none;">
     	at java.util.zip.ZipCoder.getBytes(Unknown Source)
     	at java.util.zip.ZipFile.getEntry(Unknown Source)
