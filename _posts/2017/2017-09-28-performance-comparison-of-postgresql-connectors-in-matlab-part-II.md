@@ -152,39 +152,6 @@ It may be seen that the red graphs on all the three pictures above (they corresp
 1200000. This is because **exec** throws exceptions in all modes determined by **DataReturnFormat**. For 'numeric' mode this
 exception is:
 
-```matlab 
-
-Exception for function fetch, number of tuples 1200000
-
-Caused by:
-    Error using database.jdbc.cursor (line 229)
-    Java exception occurred: 
-    java.lang.OutOfMemoryError: GC overhead limit exceeded
-    	at java.util.zip.ZipCoder.getBytes(Unknown Source)
-    	at java.util.zip.ZipFile.getEntry(Unknown Source)
-    	at java.util.jar.JarFile.getEntry(Unknown Source)
-    	at java.util.jar.JarFile.getJarEntry(Unknown Source)
-    	at sun.misc.URLClassPath$JarLoader.getResource(Unknown Source)
-    	at sun.misc.URLClassPath.getResource(Unknown Source)
-    	at java.net.URLClassLoader$1.run(Unknown Source)
-    	at java.net.URLClassLoader$1.run(Unknown Source)
-    	at java.security.AccessController.doPrivileged(Native Method)
-    	at java.net.URLClassLoader.findClass(Unknown Source)
-    	at java.lang.ClassLoader.loadClass(Unknown Source)
-    	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
-    	at java.lang.ClassLoader.loadClass(Unknown Source)
-    	at java.lang.ClassLoader.loadClass(Unknown Source)
-    	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2121)
-    	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:288)
-    	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:430)
-    	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:356)
-    	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:303)
-    	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:289)
-    	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:266)
-    	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:233)
-    	at com.mathworks.toolbox.database.sqlExec.executeTheSelectStatement(sqlExec.java:202)
-```
-
 <div class="language-matlab highlighter-rouge">
    <pre class="highlight">
 Exception for function fetch, number of tuples 1200000
@@ -193,14 +160,10 @@ Caused by:
     Error using database.jdbc.cursor (line 229)
     Java exception occurred: 
     java.lang.OutOfMemoryError: GC overhead limit exceeded
-   </pre>
-</div>
 <p><a style="cursor:pointer;" onclick="return toggleMe('para1')">
 See more...
 </a></p>
 <div id="para1" style="display:none;">
-   <div class="language-matlab highlighter-rouge">
-      <pre class="highlight">
     	at java.util.zip.ZipCoder.getBytes(Unknown Source)
     	at java.util.zip.ZipFile.getEntry(Unknown Source)
     	at java.util.jar.JarFile.getEntry(Unknown Source)
@@ -224,8 +187,8 @@ See more...
     	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:266)
     	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:233)
     	at com.mathworks.toolbox.database.sqlExec.executeTheSelectStatement(sqlExec.java:202)
-      </pre>
-   </div>
+</div>
+   </pre>
 </div>
 
 As for 'cellarray' and 'structure' modes, the exception slightly differs from the above one and is as follows:
