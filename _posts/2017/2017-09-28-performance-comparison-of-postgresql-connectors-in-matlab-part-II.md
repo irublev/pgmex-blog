@@ -154,6 +154,7 @@ exception is:
 
 <div class="language-matlab highlighter-rouge">
    <pre class="highlight">
+      <code>
 Exception for function fetch, number of tuples 1200000
 
 Caused by:
@@ -188,6 +189,7 @@ See more...
     	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:233)
     	at com.mathworks.toolbox.database.sqlExec.executeTheSelectStatement(sqlExec.java:202)
 </div>
+      </code>
    </pre>
 </div>
 
