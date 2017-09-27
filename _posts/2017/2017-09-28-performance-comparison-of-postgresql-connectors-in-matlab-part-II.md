@@ -193,8 +193,8 @@ See more...
     	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:266)
     	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:233)
     	at com.mathworks.toolbox.database.sqlExec.executeTheSelectStatement(sqlExec.java:202)
-   </pre>
 </div>
+   </pre>
 </div>
 
 As for 'cellarray' and 'structure' modes, the exception slightly differs from the above one and is as follows:
