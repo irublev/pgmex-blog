@@ -5,6 +5,19 @@ date:   2017-09-20 15:37:13 +0300
 authors: Peter Gagarinov & Ilya Rublev
 ---
 
+<script type="text/javascript">
+function toggleMe(a){
+var e=document.getElementById(a);
+if(!e)return true;
+if(e.style.display=="none"){
+e.style.display="block"
+} else {
+e.style.display="none"
+}
+return false;
+}
+</script>
+
 # Performance comparison of PostgreSQL connectors in Matlab, Part II: retrieving scalar data
 
 In [**Part I**](https://alliedtesting.github.io/pgmex-blog/2017/06/29/performance-comparison-of-postgresql-connectors-in-matlab-part-I/)
@@ -139,27 +152,8 @@ It may be seen that the red graphs on all the three pictures above (they corresp
 1200000. This is because **exec** throws exceptions in all modes determined by **DataReturnFormat**. For 'numeric' mode this
 exception is:
 
-<script type="text/javascript">
-function toggleMe(a){
-var e=document.getElementById(a);
-if(!e)return true;
-if(e.style.display=="none"){
-e.style.display="block"
-} else {
-e.style.display="none"
-}
-return false;
-}
-</script>
-
-<p><a style="cursor:pointer;" onclick="return toggleMe('para1')">Question</a></p>
-<div id="para1" style="display:none;">
-Answer to Question
-</div>
-
-<div data-role="main" class="ui-content">
-    <div data-role="collapsible">
-      <h1>```matlab 
+<p><a style="cursor:pointer;" onclick="return toggleMe('para1')">
+```matlab 
 
 Exception for function fetch, number of tuples 1200000
 
@@ -167,8 +161,17 @@ Caused by:
     Error using database.jdbc.cursor (line 229)
     Java exception occurred: 
     java.lang.OutOfMemoryError: GC overhead limit exceeded
-</h1>
-      <p>```matlab
+```
+</a></p>
+<div id="para1" style="display:none;">
+```matlab 
+
+Exception for function fetch, number of tuples 1200000
+
+Caused by:
+    Error using database.jdbc.cursor (line 229)
+    Java exception occurred: 
+    java.lang.OutOfMemoryError: GC overhead limit exceeded
     	at java.util.zip.ZipCoder.getBytes(Unknown Source)
     	at java.util.zip.ZipFile.getEntry(Unknown Source)
     	at java.util.jar.JarFile.getEntry(Unknown Source)
@@ -193,9 +196,7 @@ Caused by:
     	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:233)
     	at com.mathworks.toolbox.database.sqlExec.executeTheSelectStatement(sqlExec.java:202)
 ```
-</p>
-    </div>
-  </div>
+</div>
 
 As for 'cellarray' and 'structure' modes, the exception slightly differs from the above one and is as follows:
 
