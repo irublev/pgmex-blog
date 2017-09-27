@@ -152,9 +152,12 @@ It may be seen that the red graphs on all the three pictures above (they corresp
 1200000. This is because **exec** throws exceptions in all modes determined by **DataReturnFormat**. For 'numeric' mode this
 exception is:
 
-<div class="language-matlab highlighter-rouge">
+<!---
    <pre class="highlight">
-      <code>
+   </pre>
+-->
+
+<div class="language-matlab highlighter-rouge">
 Exception for function fetch, number of tuples 1200000
 
 Caused by:
@@ -189,8 +192,6 @@ See more...
     	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:233)
     	at com.mathworks.toolbox.database.sqlExec.executeTheSelectStatement(sqlExec.java:202)
 </div>
-      </code>
-   </pre>
 </div>
 
 As for 'cellarray' and 'structure' modes, the exception slightly differs from the above one and is as follows:
@@ -289,18 +290,8 @@ It can be easily seen that **exec** reaches 800000 tuples (894Mb for 'cellarray'
 numbers to some types of greater size), but fails to retrieve 900000 tuples (1000Mb for 'cellarray' mode and 45Mb for 'structure' mode) by throwing
 these exceptions (the first one is for 'cellarray' mode, the second one is for 'structure' mode):
 
-<div data-role="main" class="ui-content">
-    <div data-role="collapsible">
-      <h1>```matlab 
-
+```matlab
 Exception for function fetch, number of tuples 900000
-Caused by:
-    Error using database.jdbc.cursor/fetch (line 199)
-    Java exception occurred: 
-    java.lang.OutOfMemoryError: GC overhead limit exceeded
-```
-</h1>
-      <p>```matlab
 
 Caused by:
     Error using database.jdbc.cursor/fetch (line 199)
@@ -313,9 +304,6 @@ Caused by:
     	at org.postgresql.jdbc.PgResultSet.getDouble(PgResultSet.java:2294)
     	at com.mathworks.toolbox.database.fetchTheData.dataFetchFast(fetchTheData.java:1287)
 ```
-</p>
-    </div>
-  </div>
 
 ```matlab
 Exception for function fetch, number of tuples 900000
