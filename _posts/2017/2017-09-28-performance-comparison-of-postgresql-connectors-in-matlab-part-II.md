@@ -165,8 +165,8 @@ Exception for function fetch, number of tuples 1200000
 Caused by:
     Error using database.jdbc.cursor (line 229)
     Java exception occurred: 
-    java.lang.OutOfMemoryError: GC overhead limit exceeded<a onclick="return toggleMe('para1')">...</a>
-<div id="para1" style="display:none;">
+    java.lang.OutOfMemoryError: GC overhead limit exceeded<a onclick="return toggleMe('para1')">[see more...]</a>
+      <div id="para1" style="display:none;">
     	at java.util.zip.ZipCoder.getBytes(Unknown Source)
     	at java.util.zip.ZipFile.getEntry(Unknown Source)
     	at java.util.jar.JarFile.getEntry(Unknown Source)
@@ -190,13 +190,14 @@ Caused by:
     	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:266)
     	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:233)
     	at com.mathworks.toolbox.database.sqlExec.executeTheSelectStatement(sqlExec.java:202)
-</div>
+      </div>
    </pre>
 </div>
 
 As for 'cellarray' and 'structure' modes, the exception slightly differs from the above one and is as follows:
 
-```matlab
+<div class="language-matlab highlighter-rouge">
+   <pre class="highlight">
 Exception for function fetch, number of tuples 1200000
 
 Caused by:
@@ -227,7 +228,8 @@ Caused by:
     	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:266)
     	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:233)
     	at com.mathworks.toolbox.database.sqlExec.executeTheSelectStatement(sqlExec.java:202)
-```
+   </pre>
+</div>
 
 It should be also noted that the memory size necessary for storing of retrieved data within Matlab
 is different for different values of **DataReturnFormat**. Namely, for 1200000 tuples this size
