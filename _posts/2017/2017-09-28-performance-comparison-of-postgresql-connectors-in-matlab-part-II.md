@@ -139,6 +139,25 @@ It may be seen that the red graphs on all the three pictures above (they corresp
 1200000. This is because **exec** throws exceptions in all modes determined by **DataReturnFormat**. For 'numeric' mode this
 exception is:
 
+<script type="text/javascript">
+function OpenDiv(id){ 
+for (i=1;i<=100;i++) { /* so you can add up to 100 options on each page */
+var divname = 'div'+i;
+var divStyle = document.getElementById(divname).style;
+divStyle.display=(id==divname)?'block':'none';
+}
+return false;
+} 
+</script>
+
+<p><a style="cursor:pointer;" onclick="OpenDiv('div1')">Question 1</a></p>
+<div id="div1" style="display:block;">
+Answer to Question 1
+</div><p><a style="cursor:pointer;" onclick="OpenDiv('div2')">Question 2</a></p>
+<div id="div2" style="display:none;">
+Answer to Question 2
+</div>
+
 <div data-role="main" class="ui-content">
     <div data-role="collapsible">
       <h1>```matlab 
