@@ -153,11 +153,10 @@ It may be seen that the red graphs on all the three pictures above (they corresp
 exception is:
 
 <!---
-   <pre class="highlight">
-   </pre>
 -->
 
 <div class="language-matlab highlighter-rouge">
+   <pre class="highlight">
 Exception for function fetch, number of tuples 1200000
 
 Caused by:
@@ -167,7 +166,9 @@ Caused by:
 <a style="cursor:pointer;" onclick="return toggleMe('para1')">
 See more...
 </a>
+   </pre>
 <div id="para1" style="display:none;">
+   <pre class="highlight">
     	at java.util.zip.ZipCoder.getBytes(Unknown Source)
     	at java.util.zip.ZipFile.getEntry(Unknown Source)
     	at java.util.jar.JarFile.getEntry(Unknown Source)
@@ -191,6 +192,7 @@ See more...
     	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:266)
     	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:233)
     	at com.mathworks.toolbox.database.sqlExec.executeTheSelectStatement(sqlExec.java:202)
+   </pre>
 </div>
 </div>
 
