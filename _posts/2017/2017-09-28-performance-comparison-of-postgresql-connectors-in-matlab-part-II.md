@@ -140,22 +140,21 @@ It may be seen that the red graphs on all the three pictures above (they corresp
 exception is:
 
 <script type="text/javascript">
-function OpenDiv(id){ 
-for (i=1;i<=100;i++) { /* so you can add up to 100 options on each page */
-var divname = 'div'+i;
-var divStyle = document.getElementById(divname).style;
-divStyle.display=(id==divname)?'block':'none';
+function toggleMe(a){
+var e=document.getElementById(a);
+if(!e)return true;
+if(e.style.display=="none"){
+e.style.display="block"
+} else {
+e.style.display="none"
 }
 return false;
-} 
+}
 </script>
 
-<p><a style="cursor:pointer;" onclick="OpenDiv('div1')">Question 1</a></p>
-<div id="div1" style="display:block;">
-Answer to Question 1
-</div><p><a style="cursor:pointer;" onclick="OpenDiv('div2')">Question 2</a></p>
-<div id="div2" style="display:none;">
-Answer to Question 2
+<p><a style="cursor:pointer;" onclick="return toggleMe('para1')">Question</a></p>
+<div id="para1" style="display:none;">
+Answer to Question
 </div>
 
 <div data-role="main" class="ui-content">
