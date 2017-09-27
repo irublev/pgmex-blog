@@ -166,7 +166,7 @@ Caused by:
     Error using database.jdbc.cursor (line 229)
     Java exception occurred: 
     java.lang.OutOfMemoryError: GC overhead limit exceeded<a onclick="return toggleMe('para1')">[see more...]</a>
-      <div id="para1" style="display:none; margin: 0; padding: 0">
+<div id="para1" style="display:none; margin-top: -4px;">
     	at java.util.zip.ZipCoder.getBytes(Unknown Source)
     	at java.util.zip.ZipFile.getEntry(Unknown Source)
     	at java.util.jar.JarFile.getEntry(Unknown Source)
@@ -190,7 +190,7 @@ Caused by:
     	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:266)
     	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:233)
     	at com.mathworks.toolbox.database.sqlExec.executeTheSelectStatement(sqlExec.java:202)
-      </div>
+</div>
    </pre>
 </div>
 
