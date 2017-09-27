@@ -159,14 +159,14 @@ See more...
 -->
 
 <div class="language-matlab highlighter-rouge">
-   <pre class="highlight" style="margin-bottom: -30px;" >
+   <pre class="highlight" style="bottom: -30px;" >
 Exception for function fetch, number of tuples 1200000
 
 Caused by:
     Error using database.jdbc.cursor (line 229)
     Java exception occurred: 
     java.lang.OutOfMemoryError: GC overhead limit exceeded<a onclick="return toggleMe('para1')">[see more...]</a>
-<div id="para1" style="display:none; margin-top: -10px;">
+<div id="para1" style="display:none; margin-top: -15px;">
     	at java.util.zip.ZipCoder.getBytes(Unknown Source)
     	at java.util.zip.ZipFile.getEntry(Unknown Source)
     	at java.util.jar.JarFile.getEntry(Unknown Source)
