@@ -57,11 +57,9 @@ and data with timestamps. What concerns conditions of the experiments, they are 
 ## Methods of data retrieval in **Matlab Database Toolbox**
 
 There are two ways to retrieve data from the database by means of **Matlab Database Toolbox**. 
-
 The first is based on a selection query
 by calling **exec** method of **database.jdbc.connection** class. This **exec** returns an object of **database.jdbc.cursor** class.
 After this we may retrieve results by calling **fetch** method of this **database.jdbc.cursor** object.
-
 Secondly, it is possible to get results immediately by calling **fetch** method of
 **database.jdbc.database** class. The differences of these methods have their nuances not relevant for our investigation. 
 
@@ -73,14 +71,12 @@ using **exec** and **fetch**.
 There are three important parameters set via **setdbprefs** function. They determine the format, in which
 **Matlab Database Toolbox** returns results of data retrieval. Their names are **DataReturnFormat**, **NullNumberRead**
 and **NullStringRead**.
-
 The parameter **DataReturnFormat**, defines the way data is represented in Matlab,
 and can take three possible values: 'cellarray', 'numeric', and 'structure'. 
 
 If **DataReturnFormat** equals
 'cellarray', data is returned as a two-dimensional cell array. At that each cell contains the value of some field for some tuple.
 The field corresponds to the column number of this cell within the whole cell array, while the tuple is determined by its row number.
-
 **NullNumberRead** and **NullStringRead** determine values that substitute NULL values (in case these
 values are to be returned as numbers and strings, respectively).
 
@@ -95,7 +91,7 @@ configured by **NullNumberRead** and **NullStringRead** (exactly as above in cas
 ## Methods of data retrieval in **PgMex**
 
 The same problem of data retrieval can be solved via [**PgMex**](http://pgmex.alliedtesting.com) in a way very similar to the one described above. 
-[**PgMex**] implements two commands: [**exec**](http://pgmex.alliedtesting.com/#exec) for execution of
+[**PgMex**](http://pgmex.alliedtesting.com) implements two commands: [**exec**](http://pgmex.alliedtesting.com/#exec) for execution of
 queries returning a pointer to **PGresult** structure with results and [**getf**](http://pgmex.alliedtesting.com/#getf) for
 transforming the mentioned **PGresult** structure into a Matlab friendly format. More precisely,
 [**getf**](http://pgmex.alliedtesting.com/#getf) returns a list of structures, one structure per each field of retrieved table.
