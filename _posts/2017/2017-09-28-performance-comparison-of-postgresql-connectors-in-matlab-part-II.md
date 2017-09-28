@@ -209,8 +209,6 @@ It should be also noted that the memory size necessary for storing a retrieved d
 is different for different values of **DataReturnFormat**. The sizes for the experiments above are given
 by the following table:
 
-<div class="language-matlab highlighter-rouge">
-   <pre class="highlight">
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
@@ -256,13 +254,13 @@ by the following table:
   </tr>
 </table>
 <a style="cursor:pointer;" onclick="return toggleMe('paradsizes')">[see more...]</a>
-<div id="paradsizes" style="display:none; margin-top: -5px;">
+<div id="paradsizes" style="display:none;">
 <table class="tg">
-  <tr>
-    <th class="tg-baqh" height="0">Number of<br>tuples</th>
-    <th class="tg-baqh" height="0">Data size for<br>'numeric mode'</th>
-    <th class="tg-baqh" height="0">Data size for<br>'cellarray' mode</th>
-    <th class="tg-baqh" height="0">Data size for<br>'structure' mode</th>
+  <tr style="display: none">
+    <th class="tg-baqh">Number of<br>tuples</th>
+    <th class="tg-baqh">Data size for<br>'numeric mode'</th>
+    <th class="tg-baqh">Data size for<br>'cellarray' mode</th>
+    <th class="tg-baqh">Data size for<br>'structure' mode</th>
   </tr>
   <tr>
     <td class="tg-baqh">200000</td>
@@ -355,7 +353,7 @@ by the following table:
     <td class="tg-baqh">69Mb</td>
   </tr>
 </table>
-</div></pre></div>
+</div>
 
 The mentioned difference is explained so. In 'cellarray' mode we need to store each number in a separate cell. 'numeric'
 mode is almost twice more expensive than 'structure' because all numbers in 'numeric' mode are converted into **double**
