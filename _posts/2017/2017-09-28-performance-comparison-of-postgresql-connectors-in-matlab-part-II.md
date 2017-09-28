@@ -256,7 +256,7 @@ by the following table:
 <a style="cursor:pointer;" onclick="return toggleMe('paradsizes')">[see more...]</a>
 <div id="paradsizes" style="display:none;">
 <table class="tg">
-  <tr style="display: none">
+  <tr style="visibility: hidden">
     <th class="tg-baqh">Number of<br>tuples</th>
     <th class="tg-baqh">Data size for<br>'numeric mode'</th>
     <th class="tg-baqh">Data size for<br>'cellarray' mode</th>
