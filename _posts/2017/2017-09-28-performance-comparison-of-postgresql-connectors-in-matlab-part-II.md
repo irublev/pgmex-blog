@@ -256,7 +256,7 @@ by the following table:
 </table>
 <a style="cursor:pointer; margin-top: -10px;" onclick="return toggleMe('paradsizes')">[see more...]</a>
 <div id="paradsizes" style="display:none;">
-<table class="tg" style="margin-top: -40px;">
+<table class="tg" style="margin-top: -60px;">
   <tr style="visibility: hidden">
     <th class="tg-baqh">Number of<br>tuples</th>
     <th class="tg-baqh">Data size for<br>'numeric mode'</th>
@@ -367,7 +367,7 @@ by means of **exec**.
 
 Starting with 1200000 tuples [**exec**](http://pgmex.alliedtesting.com/#exec) together with [**getf**](http://pgmex.alliedtesting.com/#getf) methods
 from [**PgMex**](http://pgmex.alliedtesting.com) are the only ones that successfully solve the problem of data retrieval. 
-On our configuration [**PgMex**] retrieves the test data of 2000000 tuples (122Mb for 'numeric' mode, 1778Mb for 'cellarray' mode and 69Mb for 'structure' mode)
+On our configuration [**PgMex**](http://pgmex.alliedtesting.com) retrieves the test data of 2000000 tuples (122Mb for 'numeric' mode, 1778Mb for 'cellarray' mode and 69Mb for 'structure' mode)
 approximately in 6 seconds.
 
 It turns out that if we only take a range [0, 1100000] for a number of tuples (as number of tuples = 1100000 is where the red graphs end)
