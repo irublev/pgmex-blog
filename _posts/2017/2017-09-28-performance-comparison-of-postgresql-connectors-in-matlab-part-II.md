@@ -42,13 +42,16 @@ and data with timestamps. What concerns conditions of the experiments, they are 
 [Part I](https://alliedtesting.github.io/pgmex-blog/2017/06/29/performance-comparison-of-postgresql-connectors-in-matlab-part-I/#experiment-conditions-for-comparison-between-matlab-database-toolbox-and-pgmex).
 
 <script type="text/javascript">
-function toggleMe(a){
+function toggleMe(a,b){
 var e=document.getElementById(a);
 if(!e)return true;
+var b=document.getElementById(b);
 if(e.style.display=="none"){
 e.style.display="block"
+b.innerHTML="[see less...]"
 } else {
 e.style.display="none"
+b.innerHTML="[see more...]"
 }
 return false;
 }
@@ -170,7 +173,8 @@ Exception for function fetch, number of tuples 1200000
 Caused by:
     Error using database.jdbc.cursor (line 229)
     Java exception occurred: 
-    java.lang.OutOfMemoryError: GC overhead limit exceeded<a style="cursor:pointer;" onclick="return toggleMe('parascalerr')">[see more...]</a>
+    java.lang.OutOfMemoryError: GC overhead limit exceeded
+<a id="butscalerr" style="cursor:pointer;" onclick="return toggleMe('parascalerr','butscalerr')">[see more...]</a>
 <div id="parascalerr" style="display:none; margin-top: -15px;">
     	at java.util.Arrays.copyOf(Unknown Source)
     	at java.util.zip.ZipCoder.getBytes(Unknown Source)
@@ -250,7 +254,7 @@ by the following table:
     <td class="tg-baqh">3Mb</td>
   </tr>
 </table>
-<a style="cursor:pointer; margin-top: -10px;" onclick="return toggleMe('paradsizes')">[see more...]</a>
+<a id="butdsizes" style="cursor:pointer; margin-top: -10px;" onclick="return toggleMe('paradsizes','butdsizes')">[see more...]</a>
 <div id="paradsizes" style="display:none;">
 <table class="tg" style="margin-top: -60px;">
   <tr style="visibility: hidden">
@@ -407,7 +411,8 @@ Exception for function fetch, number of tuples 900000
 Caused by:
     Error using database.jdbc.cursor/fetch (line 199)
     Java exception occurred: 
-    java.lang.OutOfMemoryError: GC overhead limit exceeded<a style="cursor:pointer;" onclick="return toggleMe('paratserrcell')">[see more...]</a>
+    java.lang.OutOfMemoryError: GC overhead limit exceeded
+<a id="buttserrcell" style="cursor:pointer;" onclick="return toggleMe('paratserrcell','buttserrcell')">[see more...]</a>
 <div id="paratserrcell" style="display:none; margin-top: -15px;">
     	at org.postgresql.core.Encoding.decode(Encoding.java:184)
     	at org.postgresql.core.Encoding.decode(Encoding.java:195)
@@ -424,7 +429,8 @@ Exception for function fetch, number of tuples 900000
 Caused by:
     Error using database.jdbc.cursor/fetch (line 199)
     Java exception occurred: 
-    java.lang.OutOfMemoryError: GC overhead limit exceeded<a style="cursor:pointer;" onclick="return toggleMe('paratserrstr')">[see more...]</a>
+    java.lang.OutOfMemoryError: GC overhead limit exceeded
+<a id="buttserrstr" style="cursor:pointer;" onclick="return toggleMe('paratserrstr','buttserrstr')">[see more...]</a>
 <div id="paratserrstr" style="display:none; margin-top: -15px;">
     	at sun.misc.FloatingDecimal.readJavaFormatString(Unknown Source)
     	at java.lang.Double.parseDouble(Unknown Source)
