@@ -24,7 +24,7 @@ title: Home
           <h2 class="post-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
           {% include post/meta.html %}      
           <div class="post-entry">
-            {{ post.excerpt | replace: '</p>', '\n' | strip_html | replace: '\n', '"<br/>"' | xml_escape | truncatewords: site.excerpt_length }}
+            {{ post.excerpt | strip_html | xml_escape | truncatewords: site.excerpt_length }}
             {% assign excerpt_word_count = post.excerpt | number_of_words %}
             {% if post.content != post.excerpt or excerpt_word_count > site.excerpt_length %}
               <a href="{{ post.url | prepend: site.baseurl }}" class="post-read-more">[Read&nbsp;More]</a>
