@@ -209,6 +209,7 @@ It should be also noted that the memory size necessary for storing a retrieved d
 is different for different values of **DataReturnFormat**. The sizes for the experiments above are given
 by the following table:
 
+<div>
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
@@ -353,7 +354,7 @@ by the following table:
     <td class="tg-baqh">69Mb</td>
   </tr>
 </table>
-</div>
+</div></div>
 
 The mentioned difference is explained so. In 'cellarray' mode we need to store each number in a separate cell. 'numeric'
 mode is almost twice more expensive than 'structure' because all numbers in 'numeric' mode are converted into **double**
