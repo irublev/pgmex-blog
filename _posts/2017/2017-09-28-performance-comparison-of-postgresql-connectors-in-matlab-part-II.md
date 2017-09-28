@@ -5,19 +5,6 @@ date:   2017-09-28 15:37:13 +0300
 authors: Peter Gagarinov & Ilya Rublev
 ---
 
-<script type="text/javascript">
-function toggleMe(a){
-var e=document.getElementById(a);
-if(!e)return true;
-if(e.style.display=="none"){
-e.style.display="block"
-} else {
-e.style.display="none"
-}
-return false;
-}
-</script>
-
 In [Part I](https://alliedtesting.github.io/pgmex-blog/2017/06/29/performance-comparison-of-postgresql-connectors-in-matlab-part-I/)
 of this paper we started our investigation of **PostgreSQL** connectors in Matlab. Namely, we compared the performance of different approaches to insert data into the **PostgreSQL** database. Some of those approaches are based on using **Matlab Database Toolbox** (working with **PosgteSQL**
 via a direct JDBC connection). Other ones are based on [**PgMex library**](http://pgmex.alliedtesting.com) 
@@ -53,6 +40,19 @@ All the experiments below are grouped according to the types of fields retrieved
 we may retrieve only some subset of the fields just mentioned above. We discuss two cases: pure numerical data
 and data with timestamps. What concerns conditions of the experiments, they are exactly the same as in 
 [Part I](https://alliedtesting.github.io/pgmex-blog/2017/06/29/performance-comparison-of-postgresql-connectors-in-matlab-part-I/#experiment-conditions-for-comparison-between-matlab-database-toolbox-and-pgmex).
+
+<script type="text/javascript">
+function toggleMe(a){
+var e=document.getElementById(a);
+if(!e)return true;
+if(e.style.display=="none"){
+e.style.display="block"
+} else {
+e.style.display="none"
+}
+return false;
+}
+</script>
 
 ## Methods of data retrieval in **Matlab Database Toolbox**
 
