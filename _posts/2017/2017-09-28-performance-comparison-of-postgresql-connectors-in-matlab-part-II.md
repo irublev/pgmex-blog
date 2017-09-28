@@ -152,20 +152,14 @@ It may be seen that the red graphs on all the three pictures above (they corresp
 1200000. This is because **exec** throws exceptions in all modes determined by **DataReturnFormat**. For 'numeric' mode this
 exception is:
 
-<!---
-<a style="cursor:pointer;" onclick="return toggleMe('para1')">
-See more...
-</a>
--->
-
 <div class="language-matlab highlighter-rouge">
-   <pre class="highlight" style="bottom: -30px;" >
+   <pre class="highlight">
 Exception for function fetch, number of tuples 1200000
 
 Caused by:
     Error using database.jdbc.cursor (line 229)
     Java exception occurred: 
-    java.lang.OutOfMemoryError: GC overhead limit exceeded<a onclick="return toggleMe('para1')">[see more...]</a>
+    java.lang.OutOfMemoryError: GC overhead limit exceeded<a style="cursor:pointer;" onclick="return toggleMe('para1')">[see more...]</a>
 <div id="para1" style="display:none; margin-top: -15px;">
     	at java.util.zip.ZipCoder.getBytes(Unknown Source)
     	at java.util.zip.ZipFile.getEntry(Unknown Source)
@@ -190,9 +184,7 @@ Caused by:
     	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:266)
     	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:233)
     	at com.mathworks.toolbox.database.sqlExec.executeTheSelectStatement(sqlExec.java:202)
-</div>
-   </pre>
-</div>
+</div></pre></div>
 
 As for 'cellarray' and 'structure' modes, the exception slightly differs from the above one and is as follows:
 
