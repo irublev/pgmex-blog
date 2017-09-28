@@ -253,9 +253,9 @@ by the following table:
     <td class="tg-baqh">3Mb</td>
   </tr>
 </table>
-<a style="cursor:pointer;" onclick="return toggleMe('paradsizes')">[see more...]</a>
+<a style="cursor:pointer; margin-top: -10px;" onclick="return toggleMe('paradsizes')">[see more...]</a>
 <div id="paradsizes" style="display:none;">
-<table class="tg">
+<table class="tg" style="margin-top: -20px;">
   <tr style="visibility: hidden">
     <th class="tg-baqh">Number of<br>tuples</th>
     <th class="tg-baqh">Data size for<br>'numeric mode'</th>
