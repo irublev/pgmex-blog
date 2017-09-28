@@ -163,8 +163,8 @@ is significant. This can be clearly seen on the following picture generated for 
 -->
 ![Retrieving of scalar numericals]({{ site.baseurl }}/img/posts{{ page.path | remove: '_posts' | remove: '.md' }}/compareRetrieveForNumScalars_traj.jpeg)
 
-One can see all three red graphs on the picture above (they correspond to **fetch**) "break" when a number of tuples reaches
-1200000. This is because **exec** throws exceptions in all modes determined by **DataReturnFormat**. The exception for
+One can see all three red graphs on the picture above (they correspond to **fetch**) "break" when a number of tuples reaches 1200000.
+This is because **exec** throws exceptions in all modes determined by **DataReturnFormat**. The exception for
 'cellarray' and 'structure' modes is the same and is as follows:
 
 <div class="language-matlab highlighter-rouge">
@@ -256,7 +256,7 @@ by the following table:
 </table>
 <a style="cursor:pointer; margin-top: -10px;" onclick="return toggleMe('paradsizes')">[see more...]</a>
 <div id="paradsizes" style="display:none;">
-<table class="tg" style="margin-top: -20px;">
+<table class="tg" style="margin-top: -40px;">
   <tr style="visibility: hidden">
     <th class="tg-baqh">Number of<br>tuples</th>
     <th class="tg-baqh">Data size for<br>'numeric mode'</th>
