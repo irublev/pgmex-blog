@@ -18,7 +18,7 @@ return false;
 }
 </script>
 
-In [**Part I**](https://alliedtesting.github.io/pgmex-blog/2017/06/29/performance-comparison-of-postgresql-connectors-in-matlab-part-I/)
+In [Part I](https://alliedtesting.github.io/pgmex-blog/2017/06/29/performance-comparison-of-postgresql-connectors-in-matlab-part-I/)
 of this paper we started our investigation of **PostgreSQL** connectors in Matlab. Namely, we compared the performance of different approaches to insert data into the **PostgreSQL** database. Some of those approaches are based on using **Matlab Database Toolbox** (working with **PosgteSQL**
 via a direct JDBC connection). Other ones are based on [**PgMex library**](http://pgmex.alliedtesting.com) 
 (providing a connection to **PostgreSQL** via libpq library). Here we continue the comparison of **Matlab Database Toolbox** and
