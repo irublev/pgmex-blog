@@ -256,8 +256,14 @@ by the following table:
   </tr>
 </table>
 <a style="cursor:pointer;" onclick="return toggleMe('paradsizes')">[see more...]</a>
-<div id="paradsizes" style="display:none; margin-top: -15px;">
+<div id="paradsizes" style="display:none; margin-top: -5px;">
 <table class="tg">
+  <tr>
+    <th class="tg-baqh" height="0">Number of<br>tuples</th>
+    <th class="tg-baqh" height="0">Data size for<br>'numeric mode'</th>
+    <th class="tg-baqh" height="0">Data size for<br>'cellarray' mode</th>
+    <th class="tg-baqh" height="0">Data size for<br>'structure' mode</th>
+  </tr>
   <tr>
     <td class="tg-baqh">200000</td>
     <td class="tg-baqh">12Mb</td>
