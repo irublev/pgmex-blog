@@ -15,9 +15,9 @@ types.
 
 In the performance benchmarks below we use the same data that was used in the previous article for data insertion benchmarks. As was mentioned previously,
 this data is based on daily prices of real stocks on some exchanges. Given the nature of such a financial data it is quite easy to image a few real-world
-scenarious where a possibility to retrieve this data in a large amounts very quickly is very important. Below we reveal some latent
+scenarios where a possibility to retrieve this data in a large amounts very quickly is very important. Below we reveal some latent
 restrictions (concerning both performance, volumes and type of data to be processed) that do not allow our development team to use **Matlab Database
-Toolbox** in such scenarios . An alternative solution, [**PgMex library**](http://pgmex.alliedtesting.com),
+Toolbox** in such scenarios. An alternative solution, [**PgMex library**](http://pgmex.alliedtesting.com),
 was developed by our team to overcome these restrictions and to allow us to efficiently solve financial data processing problems.
 <!--end_of_excerpt-->
 
@@ -74,7 +74,7 @@ using **exec** and **fetch**.
 There are three important parameters set via **setdbprefs** function. They determine the format, in which
 **Matlab Database Toolbox** returns results of data retrieval. Their names are **DataReturnFormat**, **NullNumberRead**
 and **NullStringRead**.
-The parameter **DataReturnFormat**, defines the way data is represented in Matlab,
+The parameter **DataReturnFormat** defines the way data is represented in Matlab,
 and can take three possible values: 'cellarray', 'numeric', and 'structure'. 
 
 If **DataReturnFormat** equals
@@ -83,8 +83,9 @@ The field corresponds to the column number of this cell within the whole cell ar
 **NullNumberRead** and **NullStringRead** determine values that substitute NULL values (in case these
 values are to be returned as numbers and strings, respectively).
 
-If **DataReturnFormat** is 'numeric', data is returned as a **double** matrix with all NULL values. If some fields have
-non-numeric type, the values of these fields having are returned equal to the number given by **NullNumberRead** parameter.
+If **DataReturnFormat** is 'numeric', data is returned as a **double** matrix. Besides, NULL values of fields having numeric types
+are returned equal to the number given by **NullNumberRead** parameter. The latter number substitutes also all values of each field
+that is of non-numeric type.
 
 At last, if **DataReturnFormat** is equal to 'structure',
 then the data is returned as a structure with fields corresponding to the fields of retrieved table.
@@ -109,53 +110,50 @@ But in the present Part II of the paper we deal only with fields of scalar types
 Hence, just for simplicity in this article we may assume that **isNullVec** and **isValueNullVec** are the same.
 
 When compared with **Matlab Database Toolbox**, [**PgMex**](http://pgmex.alliedtesting.com) provides much more safe and consistent way of
-representing NULLs. In fact, with **Matlab Database Toolbox** if **NullNumberRead** is equal, for instance, to **NaN**, then ordinary **NaN**
-values may be easily confused with NULLs. The same is valid for **NullStringRead** parameter. Thus, for **Matlab Database Toolbox**
-one needs to assume in advance that some numerical or, respectively, string values cannot appear among "ordinary" ones.
+representing NULLs. In fact, with **Matlab Database Toolbox** for **NullNumberRead** set to **NaN** ordinary **NaN** values may be
+easily confused with NULLs. The same is true for **NullStringRead** parameter. Thus, for **Matlab Database Toolbox** one needs to
+assume in advance that certain numerical or, respectively, string values cannot appear among "ordinary" ones.
 
 ## Retrieving scalar numericals
 
 
 Retrieving only fields of scalar numeric types can be done in all three result formats supported by **Matlab Database Toolbox**
-determined by **DataReturnFormat** parameter including 'numeric'. But it turns out that **fetch** returns all numericals as
-ones of **double** Matlab type independently on what **DataReturnFormat** equals. And this fact leads to several rather serious
-shortages:
+determined by **DataReturnFormat** parameter including 'numeric'. But it turns out that **fetch** converts returned numericals
+to **double** Matlab regardless of **DataReturnFormat** value. This leads to a few rather serious drawbacks:
 
-- when **DataReturnFormat** equals 'numeric', fields having non-numeric types are not to be retrieved, because otherwise their values are fully lost;
-- conversion distortions are possible;
+- when **DataReturnFormat** equals 'numeric', fields of non-numeric types are not to be retrieved, because otherwise their values are fully lost;
+- conversion inaccuracies are possible;
 - returned data has a larger size than really necessary.
 
-Let us give examples for each of these items and explain the corresponding shortages in more detail.
+Let us have a look at a few examples for each of these problems and explain the corresponding side-effects in more details.
 
-Firstly, if **DataReturnFormat** is equal to 'numeric' and some field is of non-numeric type, all its values are lost
-in the resulting matrix. This is because **fetch** simply changes them
-on the value of **NullNumberRead** not able to convert them otherwise into **double**. Hence, we are forced to exlcude
-such fields as **t\_data** and **calc\_date**
-from our selection query as being of **date** type. This may seem rather strange, because in Matlab timestamps are
+Firstly, if **DataReturnFormat** is set to 'numeric' and returned data has non-numeric fields, all their values are lost
+in the resulting matrix. This is because **fetch** simply replaces all values for such fields with **NullNumberRead**
+not being able to convert them to **double**. Hence, we are forced to exclude all non-numeric fields like **t\_data** and
+**calc\_date** from our selection query. This may seem rather strange, because in Matlab timestamps are
 naturally represented by serial date numbers (of **double** type). But the point is **Matlab Database Toolbox**
-always returns timestamps as strings. So the case when **DataReturnFormat** equals to 'numeric' is not applicable
-for retrieving timestamps. That is why we consider retrieving data with timestamps separately in the subsection
-immediately following this one (see below).
+always returns timestamps as strings. So the case of **DataReturnFormat** being set to 'numeric' is not applicable
+for retrieving timestamps. That is why we consider retrieving timestamps data separately in the next subsection.
 
-Other two shortages are for all values of **DataReturnFormat**.
-What concerns conversions distortions, the problem is as follows. Each number of **double** Matlab type occupies 8 bytes,
+Other two drawbacks are valid for all values of **DataReturnFormat**.
+As for conversions imprecisions, the problem is as follows. Each number of **double** Matlab type occupies 8 bytes,
 and only 52 bits from these 8 bytes are used for the fractional part (1 bit is for the sign, 11 bits are for the exponent).
-If we convert some **int64** Matlab integer into **double**, these 52 bits may be insufficient to avoid
-a value distortion. For instance, if we try to cast the maximal possible value of **int64** equal to 9223372036854775807
+If we convert some **int64** Matlab integer into **double**, these 52 bits may be insufficient to ensure
+an accurate value conversion. For instance, if we try to cast the maximal possible value of **int64** equal to 9223372036854775807
 to **double**, we obtain 9223372036854775800 instead of the original value. Hence we cannot be sure that such a conversion does
 not lead to the described data loss. And this problem is exactly there when we try to retrieve through **fetch** such fields as
-**volume**. The latter is of **int8** type in **PostgreSQL**, that corresponds to **int64** in Matlab.
+**volume**. This is because the latter has **int8** type in **PostgreSQL**, that corresponds to **int64** in Matlab.
 
-But okey, let us assume all the values to be retrieved can be cast into **double** without any data loss. But there is the third
-shortage concerning very ineffficient usage of operative memory. The most of the fields mentioned at the beginning of this
-article like **price\_low** or **price\_close** are of **float4** type, i.e. each of their values occupies 4 bytes.
-And for our data set a result representation generated by **fetch** consumes almost twice more space than it should.
-That is because all the fields having **float4** type are better to be converted to **single** Matlab type.
+Now let us assume that all the values to be retrieved can be cast into **double** without any data loss. But even in that
+situation we are left with the third drawback of very inefficient usage of operative memory. The most of the fields mentioned
+at the beginning of this article like **price\_low** or **price\_close** are of **float4** type, i.e. each of their values
+occupies 4 bytes. And for our data set a result representation generated by **fetch** consumes almost twice more space than
+it should. That is because all the fields having **float4** type correspond to **single** Matlab type, not **double** type.
 Obviously the situation could potentially be even worse if one has to retrieve logical values. In this case **fetch**
 representation would consume 8 times more RAM comparing to the original data size.
 This inefficient data representation in **fetch** results leads to a memory shortage when the total number of tuples to be returned
 is significant. This can be clearly seen on the following picture generated for **DataReturnFormat** equal to 'numeric',
-'cellarray' and 'structure', respectively.
+'cellarray' and 'structure' respectively.
 
 <!---
 ![Retrieving of scalar numericals](pictures/compareRetrieveForNumScalars_traj.jpeg)
@@ -203,11 +201,11 @@ Caused by:
 </div></pre></div>
 
 For 'numeric' mode the corresponding exception only slightly differs from the one above. The difference
-is just that the first line of the above stack trace is absent here. So we omit to cite this exception.
+is just that the first line of the above stack trace is absent here.
 
-It should be also noted that the memory size necessary for storing a retrieved data in Matlab
-is different for different values of **DataReturnFormat**. The sizes for the experiments above are given
-by the following table:
+It should be also noted that a memory size necessary for storing a retrieved data in Matlab
+is different for different values of **DataReturnFormat**. The memory consumption for the experiments above is shown
+in the following table.
 
 <div>
 <style type="text/css">
@@ -356,12 +354,12 @@ by the following table:
 </table>
 </div></div>
 
-The mentioned difference is explained so. In 'cellarray' mode we need to store each number in a separate cell. 'numeric'
+The mentioned difference is explained as follows. In 'cellarray' mode we need to store each number in a separate cell. 'numeric'
 mode is almost twice more expensive than 'structure' because all numbers in 'numeric' mode are converted into **double**
-Matlab type. Thus, for the critical number of tuples equal to 1200000 this size
+Matlab type. Thus, for 1200000 tuples critical to **Matlab Database Toolbox** this size
 is 73Mb for 'numeric' mode, 1067Mb for 'cellarray' mode and 41Mb for 'structure' mode.
 
-But it is clear that all these fails have nothing to do with the result data format used by **fetch**.
+Clearly all these fails have nothing to do with the result data format used by **fetch**.
 The reason is a shortage of Java Heap memory for storing results of the query to be executed
 by means of **exec**.
 
