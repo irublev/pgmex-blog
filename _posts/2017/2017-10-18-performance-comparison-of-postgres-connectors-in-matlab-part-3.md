@@ -18,12 +18,11 @@ a direct JDBC connection). The second connector is [**PgMex library**](http://pg
 Let us recall the example already mentioned in [Part I](https://alliedtesting.github.io/pgmex-blog/2017/06/29/performance-comparison-of-postgresql-connectors-in-matlab-part-I/)
 illustrating the importance of retrieving arrays from **PostgreSQL**. In one of our projects we had to work with surfaces of implied volatilities derived
 from prices of options. But these surfaces should be interpolated because raw data does not give their values on some regular mesh of strikes (or deltas) and
-times to maturity of respective options. There are "holes" in data because the situation occurs often when for some combinations of option parameters the corresponding
-options simply are not traded on the market. To make such an interpolation (taking into account volumes even of raw data) is not an easy task.
-But in our project we managed to make this interpolation directly in our database itself, and this was done rather effectively by **PostgreSQL**.
-But it was necessary then to retrieve the results of interpolation. And these results, implied volatility
-surfaces were quite naturally represented in the database as three-dimensional arrays due to the parametrization mentioned above
-and dependency of these surfaces on time.
+times to maturity of respective options. There are "holes" in data because traded option parameters such as option strike and maturity do not form a regular grid in option delta/time to
+maturity space. Filling such holes requires an interpolation which is not easy to do quickly given large volumes option market data.
+In our project we managed to perform this interpolation directly in **PostgreSQL** database in a quite efficient manner.
+But it was necessary then to retrieve the results of interpolation. And these results in form of implied volatility surfaces were quite naturally represented in the database
+as three-dimensional arrays due to the parametrization mentioned above and dependency of these surfaces on time.
 
 Given the nature of such a financial data it is quite easy to image a few real-world scenarios where a possibility to retrieve this
 data in large amounts very quickly is very important. Below we reveal some latent restrictions (concerning both performance and
@@ -31,11 +30,11 @@ volumes of data to be processed) that do not allow our development team to use *
 alternative solution, [**PgMex library**](http://pgmex.alliedtesting.com), was developed by our team to overcome these restrictions
 and to allow us to efficiently solve financial data processing problems.
 
-In the performance benchmarks below we use the data that is also connected to financial modelling, although not of such
-complex nature as in the example above. But this connection namely in the case under consideration may seem rather artificial.
-The matter is the test data is simply transofrmed from the one taken from the previous articles. This is done just for simplicity
-and uniformity with the results obtained earlier, concentrating ourselves on purely technical problems we have to solve.
-More precisely, the data is based on daily prices of real stocks on some exchanges. But all the numerical fields having initially
+In the performance benchmarks below we use the data that has also to do with financial modelling, although not of such
+complex nature as in the example mentioned above (the one with the implied volatility surfaces). But this connection namely in the case under consideration may seem rather artificial.
+This is because the test data is simply transformed from the one taken from the previous articles. This is done just for simplicity
+and uniformity with the results obtained earlier, and thus - allowing us to concentrate on purely technical problems.
+The data is based on daily prices of real stocks on some exchanges with a few modifications: all the numerical fields having initially
 scalar values are transormed into arrays just be repeating each value several times. The same data was used in
 [Part I](https://alliedtesting.github.io/pgmex-blog/2017/06/29/performance-comparison-of-postgresql-connectors-in-matlab-part-I/#inserting-arrays)
 when we tested performance of *inserting* data that contained arrays. We omit here details concerning the structure of the
@@ -49,12 +48,11 @@ We use here for **Matlab Database Toolbox** the same method to retrieve data as 
 Namely, this is a consecutive execution of **exec** and **fetch** methods. And we concentrate on details 
 namely for retrieval of arrays.
 
-What concerns the format in which data may be returned. This is configured by setting **DataReturnFormat** parameter
-via **setdbprefs** function. And it is not reasonale to set **DataReturnFormat** to 'numeric'. Because
-in this case all the values of array types are substituted by the value of **NullNumberRead** parameter (also set
-by means of **setdbprefs**). And hence all such values are lost. Thus, it makes sense to consider only the cases
-when **DataReturnFormat** parameter is set to 'cellarray' or 'structure'. In the examples below we assume
-that `dbConn` is an object of **database.jdbc.connection** class obtained by the command
+The format in which data may be returned is configured by **DataReturnFormat** parameter via **setdbprefs** function. 
+Setting this parameter to 'numeric' is not reasonable because in such case all the values of array types are lost as they are substituted by the value of 
+**NullNumberRead** parameter (also set via **setdbprefs** function). Thus, it makes sense to consider only the cases
+when **DataReturnFormat** parameter is set to 'cellarray' or 'structure'. In the examples below we assume that `dbConn` is an object 
+of **database.jdbc.connection** class obtained by the command
 
 ```matlab
 dbConn=database(dbName,userName,passwordStr,...
@@ -64,7 +62,7 @@ dbConn=database(dbName,userName,passwordStr,...
 Here `dbName`, `userName`, `passwordStr` and `hostPortStr` are assumed to be char variables properly set,
 `hostPortStr` has the format `<serverName>:<portNumber>`.
 
-At first let us consider the case **DataReturnFormat** equal to 'cellarray'. Then all the values of array types
+At first let us consider the case when **DataReturnFormat** parameter is set to 'cellarray'. Then all the values of array types
 are returned as objects of **org.postgresql.jdbc.PgArray** class, each placed in a separate cell of the cell array
 being the single output of **fetch**:
 
@@ -79,9 +77,9 @@ ans =
     [1x1 org.postgresql.jdbc.PgArray]
 ```
 
-Thus, we need to transform each such an object into Matlab array. This is quite
-simple: **org.postgresql.jdbc.PgArray** has a method **getArray** returning Java array. After this the latter may be
-transformed into a Matlab cell array by passing this Java array into **cell** (see
+Thus, we need to convert each such an object into Matlab array. This is quite simple: **org.postgresql.jdbc.PgArray** 
+has a method **getArray** returning Java array. That array then can be easily transformed into a Matlab cell array 
+via **cell** function (see
 [here](https://www.mathworks.com/help/matlab/matlab_external/handling-data-returned-from-java-methods.html#bvi1br7-5)
 for example):
 
@@ -100,7 +98,7 @@ matlabFieldVal =
     [2]
 ```
 
-At that each element of the respective array is in its own cell. It is necessary to note here that for NULL
+As a result each element of the respective array is in its own cell. It is necessary to note here that for NULL
 values the corresponding cells are empty. Another remarks is that if the array as whole (not some of its elements) is
 initially NULL, it is returned not as **org.postgresql.jdbc.PgArray** object, but as a string equal to the value
 of **NullStringRead** parameter (set via **setdbprefs**):
@@ -131,10 +129,8 @@ matlabFieldVal =
 Thus, we have the full information on NULLs. And, assuming there are no NULLs (or placing into all empty cells some value,
 say, `0` or `NaN`), we are able to transform each of **org.postgresql.jdbc.PgArray** objects into ordinary Matlab array.
 
-
 Now let us consider the case when **DataReturnFormat** is equal to 'structure'. Then values of each table field are placed
-into the corresponding field of the structure being the output of **fetch**. And for fields of array types the corresponding
-values are of **java.lang.Object\[\]\[\]** type:
+into the corresponding field of the structure returned by **fetch**. Moreover each array field now has **java.lang.Object\[\]\[\]** type:
 
 ```matlab
 >> cursObj=fetch(exec(dbConn,[...
@@ -146,7 +142,7 @@ ans =
     f: [2x1 java.lang.Object[][]]
 ```
 
-Suppose that for one such a field we assigned its values to some variable, say, `jdbcFieldValVec`:
+Let us put all values of one of the fields into a separate variable named `jdbcFieldValVec`:
 
 ```matlab
 >> jdbcFieldValVec=cursObj.Data.f
@@ -180,15 +176,16 @@ char
 ```
 
 We see that `jdbcFieldVal=jdbcFieldValVec(iTuple)` being value of `iTuple`-th tuple
-is of **java.lang.Object\[\]** type with single element in this array. Taking `jdbcFieldVal(1)` we either obtain
+is of **java.lang.Object\[\]** array type and the number of elements in this array is 1. Taking `jdbcFieldVal(1)` we either obtain
 an object of **org.postgresql.jdbc.PgArray** class (if the respective array is not NULL as whole) or a string equal to the
-value of **NullStringRead** (otherwise). That is we can proceed with all this exactly as in the previous paragraph.
+value of **NullStringRead** (otherwise). That is we can proceed further with all this exactly as in the case above 
+of **DataReturnFormat** equal to 'cellarray'.
 
-The above algorithms are clear and straightforward. But the problem is when one need to apply them to several millions of
+The above algorithms are clear and straightforward. But the problem occures when one needs to apply them to several millions of
 tuples. As shown below in experiments, the conversion of initially returned data to native Matlab formats sums up to a huge overhead.
 
 And last but not least. Regardless of what type each array of numerical type has in **PostgeSQL**, applying
-**cell** to some Java array as in the above algorithms transforms the latter array into **double** Matlab array
+**cell** to some Java array (as in the approach above) transforms the latter array into **double** Matlab array
 (see [here](https://www.mathworks.com/help/matlab/matlab_external/handling-data-returned-from-java-methods.html)
 for details). This leads to a few rather serious drawbacks:
 
@@ -229,7 +226,7 @@ The respective cells of **valueVec** and of **isNullVec** contains arrays of the
 this array contains values of elements of the retrieved **PostgreSQL** array (with NULL values substituted by
 some predefined values). And for **isNullVec** the respective array determines which elements of this **PostgreSQL**
 array are equal to NULL. But all this is of importance only in the case the retrieved array is not NULL *as whole*
-within **PostgreSQL**, i.e. when the corresponding element **isValueNullVec** is `false`. Otherwise when
+within **PostgreSQL**, i.e. when the corresponding element **isValueNullVec** is `false`. Otherwise, when
 element of **isValueNullVec** equals `true` the respective cells within **valueVec** and **isNullVec** are empty.
 
 Let us illustrate this through the following example (we assume below that `<hostName>`, `<dbName>`, `<portNum>`,
@@ -356,12 +353,12 @@ Consider now the results for **DataReturnFormat** set to 'structure':
 ![Retrieving of arrays, 'structure' mode]({{ site.baseurl }}/img/posts{{ page.path | remove: '_posts' | remove: '.md' }}/compareRetrieveForArraysAsStruct_bar.jpeg)
 
 The situation is the same as above with the single exception the total time for obtaining results
-for 'structure' format is twice more than for 'cellarray' format. This is easily explained by the fact that now it is
-more difficult to "pick out" Java arrays out of the values returned by **fetch**.
+for 'structure' format is almost twice as long as the time spent for 'cellarray' format. This is because 'structure' format makes it more difficult 
+to "pick out" Java arrays out of the values returned by **fetch**.
 One can see that **Matlab Database Toolbox** digests 80000 tuples (75Mb in size), but fails to retrieve 90000 tuples (84Mb).
 
 On average the execution time for [**exec**](http://pgmex.alliedtesting.com/#exec) along with
-[**getf**](http://pgmex.alliedtesting.com/#getf) is approximately 81 (!) times more of that time
+[**getf**](http://pgmex.alliedtesting.com/#getf) is approximately 81 (!) times longer of that time
 for **exec** and **fetch** from **Matlab Database Toolbox** along with conversion of results, at least for those volumes
 both function succeeded to retrieve. If again we consider only "pure" time, i.e. without transformation
 of results into native Matlab formats, [**PgMex**](http://pgmex.alliedtesting.com) turns out to be about 5.5 times faster than
