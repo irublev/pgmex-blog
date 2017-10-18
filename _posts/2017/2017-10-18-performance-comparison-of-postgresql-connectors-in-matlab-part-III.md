@@ -114,7 +114,7 @@ of **NullStringRead** parameter (set via **setdbprefs**):
 
 ```matlab
 >> cursObj=fetch(exec(dbConn,[...
-       'select ''{1,NULL}''::int4[] as f union '...
+       'select ''{1,NULL,2}''::int4[] as f union '...
        'select NULL::int4[] as f']));
 >> cursObj.Data
 
@@ -136,6 +136,7 @@ matlabFieldVal =
 
     [1]
     []
+    [2]
 ```
 
 Thus, we have the full information on NULLs. And, assuming there are no NULLs (or placing into all empty cells some value,
@@ -178,7 +179,7 @@ java.lang.Object[]:
  
 ans =
  
-{1,NULL}
+{1,NULL,2}
 
 >> class(jdbcFieldVal(1))
 
@@ -262,7 +263,7 @@ Let us illustrate this through the following example (we assume below that `<hos
        'host=<hostName> dbname=<dbName> port=<portNum> '...
        'user=<userName> password=<passwordStr>']);
 >> pgResult=pgmexec('exec',dbConn,[...
-       'select ''{1,NULL}''::int4[] as f union '...
+       'select ''{1,NULL,2}''::int4[] as f union '...
        'select NULL::int4[] as f']);
 >> SRes=pgmexec('getf',pgResult,'%int4[]',0)
 
@@ -276,7 +277,7 @@ SRes =
 
 ans = 
 
-    [2x1 int32]
+    [3x1 int32]
     []
 
 >> SRes.valueVec{1}
@@ -285,12 +286,13 @@ ans =
 
            1
            0
+           2
 
 >> SRes.isNullVec
 
 ans = 
 
-    [2x1 logical]
+    [3x1 logical]
     []
 
 >> SRes.isNullVec{1}
@@ -299,6 +301,7 @@ ans =
 
      0
      1
+     0
 
 >> SRes.isValueNullVec
 
