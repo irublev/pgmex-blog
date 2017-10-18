@@ -72,6 +72,7 @@ being the single output of **fetch**:
 >> cursObj=fetch(exec(dbConn,[...
        'select ''{1,2}''::int4[] as f union '...
        'select ''{3}''::int4[] as f']));
+
 >> cursObj.Data
 ans = 
     [1x1 org.postgresql.jdbc.PgArray]
@@ -88,9 +89,11 @@ for example):
 >> jdbcFieldVal=cursObj.Data{1}
 jdbcFieldVal =
 {1,2}
+
 >> class(jdbcFieldVal)
 ans =
 org.postgresql.jdbc.PgArray
+
 >> matlabFieldVal=cell(jdbcFieldVal.getArray())
 matlabFieldVal = 
     [1]
@@ -106,14 +109,18 @@ of **NullStringRead** parameter (set via **setdbprefs**):
 >> cursObj=fetch(exec(dbConn,[...
        'select ''{1,NULL,2}''::int4[] as f union '...
        'select NULL::int4[] as f']));
+
 >> cursObj.Data
 ans = 
     [1x1 org.postgresql.jdbc.PgArray]
     'null'
+
 >> class(cursObj.Data{2})
 ans =
 char
+
 >> jdbcFieldVal=cursObj.Data{1};
+
 >> matlabFieldVal=cell(jdbcFieldVal.getArray())
 matlabFieldVal = 
     [1]
@@ -133,6 +140,7 @@ values are of **java.lang.Object\[\]\[\]** type:
 >> cursObj=fetch(exec(dbConn,[...
        'select ''{1,NULL}''::int4[] as f union '...
        'select NULL::int4[] as f']));
+
 >> cursObj.Data
 ans = 
     f: [2x1 java.lang.Object[][]]
@@ -146,20 +154,26 @@ jdbcFieldValVec =
 java.lang.Object[][]:
     [org.postgresql.jdbc.PgArray]
     'null'
+
 >> jdbcFieldVal=jdbcFieldValVec(1)
 jdbcFieldVal =
 java.lang.Object[]:
     [org.postgresql.jdbc.PgArray]
+
 >> jdbcFieldVal(1)
 ans =
 {1,NULL,2}
+
 >> class(jdbcFieldVal(1))
 ans =
 org.postgresql.jdbc.PgArray
+
 >> jdbcFieldVal=jdbcFieldValVec(2);
+
 >> jdbcFieldVal(1)
 ans =
 null
+
 >> class(jdbcFieldVal(1))
 ans =
 char
@@ -223,35 +237,43 @@ Let us illustrate this through the following example (we assume below that `<hos
 
 ```matlab
 >> import com.allied.pgmex.pgmexec;
+
 >> dbConn=pgmexec('connect',[...
        'host=<hostName> dbname=<dbName> port=<portNum> '...
        'user=<userName> password=<passwordStr>']);
+
 >> pgResult=pgmexec('exec',dbConn,[...
        'select ''{1,NULL,2}''::int4[] as f union '...
        'select NULL::int4[] as f']);
+
 >> SRes=pgmexec('getf',pgResult,'%int4[]',0)
 SRes = 
           valueVec: {2x1 cell}
          isNullVec: {2x1 cell}
     isValueNullVec: [2x1 logical]
+
 >> SRes.valueVec
 ans = 
     [3x1 int32]
     []
+
 >> SRes.valueVec{1}
 ans =
            1
            0
            2
+
 >> SRes.isNullVec
 ans = 
     [3x1 logical]
     []
+
 >> SRes.isNullVec{1}
 ans =
      0
      1
      0
+
 >> SRes.isValueNullVec
 ans =
      0
