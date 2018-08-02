@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Free academic licenses for PgMex
+title:  "Free academic licenses for PgMex"
 date:   2018-08-02 23:20:31 +0300
 authors: Peter Gagarinov & Ilya Rublev
 ---
@@ -16,4 +16,3 @@ Please note that [**PgMex**](http://pgmex.alliedtesting.com) academic licenses a
 support, but with acceptance of bug reports. With your academic license we offer six months of free updates.
 
 For more information visit the **PgMex** website at: [http://pgmex.alliedtesting.com](http://pgmex.alliedtesting.com).
-<!--end_of_excerpt-->
