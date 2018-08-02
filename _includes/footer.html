@@ -85,8 +85,7 @@
       <p class="copyright text-muted">
         <a href="{{ site.author.url }}">{{ site.author.name }}</a>
         &nbsp;&bull;&nbsp;
-        {{ site.time | date: '%Y' }}
-        {% if site.time|date('%Y') == '2017' %}
+        {% if { site.time | date: '%Y' } == '2017' %}
         Copyright 2017
         {% else %}
         Copyright 2017 - {{ site.time | date: '%Y' }}
