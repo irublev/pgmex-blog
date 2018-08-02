@@ -72,6 +72,7 @@ permalink: /:year/:month/:day/:title/
 paginate: 5
 kramdown:
   input: GFM
+future: true
 
 # Default YAML values (more information on Jekyll's site)
 defaults:
@@ -81,7 +82,6 @@ defaults:
       type: "posts"
     values:
       comments: true  # add comments to all blog posts
-      future: true
   -
     scope:
       path: "" # all files
