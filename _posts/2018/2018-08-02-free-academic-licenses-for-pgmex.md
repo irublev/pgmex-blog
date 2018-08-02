@@ -15,5 +15,5 @@ institution e-mail [here](http://pgmex.alliedtesting.com/#academic-license).
 Please note that [**PgMex**](http://pgmex.alliedtesting.com) academic licenses are provided “as-is” and without full
 support, but with acceptance of bug reports. With your academic license we offer six months of free updates.
 
-For more information visit the **PgMex** website at: http://pgmex.alliedtesting.com
+For more information visit the **PgMex** website at: [http://pgmex.alliedtesting.com](http://pgmex.alliedtesting.com).
 <!--end_of_excerpt-->
