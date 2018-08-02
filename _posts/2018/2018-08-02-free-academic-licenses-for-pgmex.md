@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Free academic licenses for PgMex"
-date:   '2018-08-02 23:20:31 +03:00'
+date:   2018-08-02 23:20:31 +0300
 authors: Peter Gagarinov & Ilya Rublev
 ---
 
