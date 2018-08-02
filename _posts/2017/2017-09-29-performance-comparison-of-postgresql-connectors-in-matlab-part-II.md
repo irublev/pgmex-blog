@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Performance comparison of PostgreSQL connectors in Matlab, Part II: retrieving scalar data"
-date:   2017-09-29 15:37:13 +0300
+date:   '2017-09-29 15:37:13 +03:00'
 authors: Peter Gagarinov & Ilya Rublev
 ---
 
