@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Performance comparison of Postgres connectors in Matlab, Part 3: retrieving arrays"
+title:  "Performance comparison of Postgres connectors in Matlab, Part 3&#58 retrieving arrays"
 date:   2017-10-18 19:14:27 +0300
 authors: Peter Gagarinov & Ilya Rublev
 ---
